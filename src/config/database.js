@@ -4,6 +4,7 @@ module.exports = {
   username: 'postgres',
   password: 'docker',
   database: 'fastfeet',
+  logging: true,
   define: {
     timesStamps: true,
     underscored: true,
