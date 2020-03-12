@@ -1,0 +1,324 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API valitation ",
+    "version": "1.0.0",
+    "title": "FastFeet",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "lucas333maciel@gmail.com"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "",
+  "tags": [],
+  "schemes": ["http"],
+  "paths": {
+    "/sessions": {
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Add a new Session to the store",
+        "description": "",
+        "operationId": "AddSession",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Session object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Session"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [
+              "write:sessions",
+              "read:sessions"
+            ]
+          }
+        ]
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Add a new User to the store",
+        "description": "",
+        "operationId": "addUser",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update an existing User",
+        "description": "",
+        "operationId": "updateUser",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "401": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/recipients": {
+      "get": {
+        "tags": [
+          "Recipients"
+        ],
+        "summary": "get all Recipients",
+        "description": "",
+        "operationId": "getRecipients",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "401": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [
+              "write:recipients",
+              "read:recipients"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Recipients"
+        ],
+        "summary": "Add a new Recipients to the store",
+        "description": "",
+        "operationId": "addRecipients",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Recipients object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Recipients"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [
+              "write:recipients",
+              "read:recipients"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Recipients"
+        ],
+        "summary": "Add a new Recipients to the store",
+        "description": "",
+        "operationId": "addRecipients",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Recipients object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Recipients"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [
+              "write:recipients",
+              "read:recipients"
+            ]
+          }
+        ]
+      }
+    },
+    "/recipients/{id}": {
+      "put": {
+        "tags": [
+          "Recipients"
+        ],
+        "summary": "Add a new Session to the store",
+        "description": "",
+        "operationId": "AddSession",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Session object that needs to be added to the store",
+            "required": true,
+            "format":"int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [
+              "write:sessions",
+              "read:sessions"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "description":"Use token para autenticação na api exemplo de uso : Bearer TOKEN",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Session": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "admin": {
+          "type": "integer"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Recipients": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "cep": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

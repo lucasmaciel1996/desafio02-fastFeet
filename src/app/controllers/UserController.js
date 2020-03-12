@@ -73,11 +73,15 @@ class UserController {
       return res.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, name, admin } = await user.update(req.body);
+    if (req.body.admin !== undefined && user.admin !== true) {
+      return res.status(401).json({ error: 'Access denied' });
+    }
+
+    const { id, name, email: emailUser, admin } = await user.update(req.body);
     return res.json({
       id,
       name,
-      email,
+      email: emailUser,
       admin,
     });
   }
